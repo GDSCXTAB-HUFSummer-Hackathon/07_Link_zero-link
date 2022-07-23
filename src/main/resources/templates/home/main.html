@@ -18,7 +18,7 @@
           <a
             class="logo"
             href="main.html"
-            th:href="${homeChallenges? @{/home/${user.userIdx}} : @{/home}"
+            th:href="${homeChallenges}? '@{/home/${user.userIdx}}' : '@{/home}'"
           >
             <li>
               <img
@@ -35,7 +35,7 @@
           <a href="#">
             <li>전체 상품</li>
           </a>
-          <a href="diaryList.html" th:href="@{}">
+          <a href="diaryList.html" th:href="@{/diary}">
             <li>커뮤니티</li>
           </a>
           <a href="#">
@@ -132,7 +132,7 @@
             <a
               class="col2__row3"
               href="#"
-              th:href="${homeChallenges}? @{/users/sign-up} : @{/diary}"
+              th:href="${homeChallenges}? '@{/users/sign-up}' : '@{/diary}'"
             >
               <img
                 src="./photo/text_start.png"
