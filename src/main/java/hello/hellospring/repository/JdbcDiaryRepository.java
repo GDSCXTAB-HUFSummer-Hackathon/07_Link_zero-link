@@ -5,10 +5,12 @@ import hello.hellospring.domain.DiaryList;
 import hello.hellospring.domain.Hashtag;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
 
+@Repository
 public class JdbcDiaryRepository implements DiaryRepository{
     private final JdbcTemplate jdbcTemplate;
     public JdbcDiaryRepository(DataSource dataSource) {
@@ -17,18 +19,20 @@ public class JdbcDiaryRepository implements DiaryRepository{
 
     @Override
     public List<DiaryList> getDiaryList() {
-        List<DiaryList> diaryLists = jdbcTemplate.query("SELECT D.diaryIdx, U.userIdx, U.username ,D.diaryContent, D.diaryImg, DATE_FORMAT(D.diaryDate, '%Y-%m-%d %a') AS diaryDate, D.status, D.isPublic FROM Diary D JOIN Member U on D.userIdx = U.userIdx where D.isPublic='Y' AND D.status='Y' ORDER BY D.createdAt DESC;",
+        List<DiaryList> diaryLists = jdbcTemplate.query("SELECT D.diaryIdx, U.userIdx, U.username ,D.diaryContent, D.diaryImg, FORMATDATETIME(D.diaryDate, 'yyyy-MM-dd') AS diaryDate, D.status, D.isPublic\n" +
+                        "FROM Diary D JOIN Member U on D.userIdx = U.userIdx\n" +
+                        "where D.isPublic='Y' AND D.status='Y'\n" +
+                        "ORDER BY D.createdAt DESC;",
                 getDiaryListMapper());
         return diaryLists;
 
     }
 
-    @Override
-    public List<Hashtag> getHashTags() {
-        List<Hashtag> hashtag = jdbcTemplate.query("SELECT H.hashtagContent, DH.diaryIdx\n" +
-                "FROM DiaryHashtag DH JOIN Hashtag H on DH.hashtagIdx = H.hashtagIdx", getDiaryHashtagList());
-        return hashtag;
-    }
+//    @Override
+//    public List<Hashtag> getHashTags() {
+//        List<Hashtag> hashtag = jdbcTemplate.query("SELECT H.hashtagContent, DH.diaryIdx FROM DiaryHasgtag DH JOIN Hashtag H on DH.hashtagIdx = H.hashtagIdx;", getDiaryHashtagList());
+//        return hashtag;
+//    }
 
     private RowMapper<DiaryList> getDiaryListMapper() {
         return (rs, rowNum) -> {
@@ -40,8 +44,8 @@ public class JdbcDiaryRepository implements DiaryRepository{
             diaryList.setDiaryImg(rs.getString("diaryImg"));
             diaryList.setDiaryDate(rs.getString("diaryDate"));
             diaryList.setStatus(rs.getString("status"));
-            diaryList.setHashtag(jdbcTemplate.queryForObject("SELECT H.hashtagContent, DH.diaryIdx\n" +
-                    "FROM DiaryHashtag DH JOIN Hashtag H on DH.hashtagIdx = H.hashtagIdx\n" +
+            diaryList.setHashtag(jdbcTemplate.queryForObject("SELECT H.hashtagContent\n" +
+                    "FROM DiaryHasgtag DH JOIN Hashtag H on DH.hashtagIdx = H.hashtagIdx\n" +
                     "WHERE diaryIdx=?;", String.class, rs.getInt("diaryIdx")));
             return diaryList;
         };

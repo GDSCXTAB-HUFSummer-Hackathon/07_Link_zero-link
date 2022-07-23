@@ -8,5 +8,5 @@ import java.util.List;
 public interface DiaryRepository {
     List<DiaryList> getDiaryList();
 
-    List<Hashtag> getHashTags();
+//    List<Hashtag> getHashTags();
 }
