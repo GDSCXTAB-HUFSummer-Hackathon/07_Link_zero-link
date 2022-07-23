@@ -75,7 +75,9 @@
               </div>
             </div>
             <div class="btns">
-              <input type="submit" value="작성" />
+              <a class="submitBtn" th:href="@{/diary/{userIdx}(userIdx = 2)}"
+                ><input type="submit" value="작성"
+              /></a>
               <a href="#">취소</a>
             </div>
           </div>
