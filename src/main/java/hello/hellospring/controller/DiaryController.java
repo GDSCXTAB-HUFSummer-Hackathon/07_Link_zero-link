@@ -11,6 +11,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +60,41 @@ public class DiaryController {
         return "diary/uploadDiary";
     }
 
+    @GetMapping("/calendar/{userIdx}")
+    public String getCalendar(@PathVariable int userIdx, @RequestParam(required = false) int year, @RequestParam(required = false) int month, Model model) {
+        LocalDate now = LocalDate.now();
+
+        if (year == 0) {
+            year = now.getYear();
+        }
+        if (month == 0) {
+            month = now.getMonthValue();
+        }
+        // 월 가지고 최대일 결정 (2월이면 윤년 test, 윤년이면 최대일배열=dayDataLeapYear)
+        int[] dayData = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int[] dayDataLeapYear = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+        boolean leapTest = isLeapYear(year);
+        int dayMax;
+        if (month == 2 && leapTest == true) { //2월이고 윤년
+            dayMax = dayDataLeapYear[month - 1];
+        } else if (month == 2 && leapTest == false) { //2월이지만 윤년X
+            dayMax = dayData[month - 1];
+        } else {// 2월 아님
+            dayMax = dayData[month - 1];
+        }
+        List<Integer> dates = diaryService.getCalendar(userIdx, year, month, dayMax);
+        model.addAttribute("dates", dates);
+        System.out.println("dates = " + dates);
+        return "diary/calendar";
+    }
+    // 윤년 여부 확인
+    public boolean isLeapYear(int year) {
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+            return true;
+        else
+            return false;
+    }
     @GetMapping("hello-mvc")
     public String helloMvc(@RequestParam("name") String name, Model model){
         model.addAttribute("name", name);

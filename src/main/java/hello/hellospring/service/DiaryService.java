@@ -25,6 +25,11 @@ public class DiaryService {
         diaryRepository.save(diary, userIdx);
     }
 
+    public List<Integer> getCalendar(int userIdx, int year, int month, int dayMax) {
+        List<Integer> dates = diaryRepository.getCalendar(userIdx, year, month);
+        return dates;
+    }
+
 //    public List<Hashtag> getHashTags() {
 //        return diaryRepository.getHashTags();
 //    }

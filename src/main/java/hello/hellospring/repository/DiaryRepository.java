@@ -11,4 +11,5 @@ public interface DiaryRepository {
 
     void save(Diary diary, int userIdx);
 
+    List<Integer> getCalendar(int userIdx, int year, int month);
 }
