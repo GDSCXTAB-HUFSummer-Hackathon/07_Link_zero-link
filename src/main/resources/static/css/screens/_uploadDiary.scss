@@ -72,22 +72,33 @@
           display: flex;
           justify-content: flex-end;
           align-items: center;
-          input,
           a {
-            padding: 18px;
             margin: 8px;
             color: white;
             border: none;
             font-size: 18px;
             font-weight: 600;
             cursor: pointer;
-          }
-          input {
             padding: 15px;
-            background-color: #3498db;
+            background-color: #bebebe;
+            &.submitBtn {
+              background-color: #3498db;
+              color: white;
+              padding: 0px;
+              margin: 0px;
+            }
+            input {
+              margin: 8px;
+              color: white;
+              border: none;
+              font-size: 18px;
+              font-weight: 600;
+              cursor: pointer;
+              padding: 4px;
+              background-color: #3498db;
+            }
           }
           a {
-            background-color: #bebebe;
           }
         }
       }
@@ -144,13 +155,12 @@
             }
           }
           .btns {
-            input,
             a {
               font-size: 15px;
-              padding: 10px;
-            }
-            input {
-              padding: 8px;
+              padding: 13px;
+              input {
+                padding: 1px;
+              }
             }
           }
         }
