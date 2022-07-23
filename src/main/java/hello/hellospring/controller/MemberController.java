@@ -32,7 +32,7 @@ public class MemberController {
     public String signIn(PostSignInReq postSignInReq ) {
        int userIdx = memberService.signIn(postSignInReq);
 
-        return "redirect:/home/{userIdx}";
+        return "redirect:/home/"+ userIdx;
     }
 
 }
