@@ -35,7 +35,7 @@ public class JdbcDiaryRepository implements DiaryRepository{
     @Override
     public void save(Diary diary, int userIdx) {
         SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
-        jdbcInsert.withTableName("diary").usingGeneratedKeyColumns("userIdx");
+        jdbcInsert.withTableName("diary").usingGeneratedKeyColumns("diaryIdx");
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("diaryContent", diary.getDiaryContent());
         parameters.put("diaryDate", diary.getDiaryDate());
