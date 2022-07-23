@@ -28,7 +28,7 @@ public class HomeController {
 
         List<HomeChallenge> homeChallenges = new ArrayList<>();
         List<MenuList> menus = homeService.getMenuList();
-        model.addAttribute("homeChallenges", homeChallenges);
+        model.addAttribute("homeChallenges", null);
         model.addAttribute("menus", menus);
 
         return "home/main";
