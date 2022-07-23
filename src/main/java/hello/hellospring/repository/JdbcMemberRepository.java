@@ -5,10 +5,13 @@ import hello.hellospring.domain.PostUserRes;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.util.*;
 
+@Repository
 public class JdbcMemberRepository implements MemberRepository {
     private final JdbcTemplate jdbcTemplate;
 
