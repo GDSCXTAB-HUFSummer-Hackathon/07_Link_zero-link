@@ -1,6 +1,8 @@
 package hello.hellospring.controller;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.domain.PostSignInReq;
+import hello.hellospring.domain.PostUserRes;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,28 +22,17 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    @GetMapping("/members/new")
-    public String createForm() {
-        return "members/createMemberForm";
+    @PostMapping("user/sign-up")
+    public String create(PostUserRes postUserRes){
+        memberService.createUser(postUserRes);
+        return "redirect:/home";
     }
 
-    @PostMapping("/members/new")
-    public String create(MemberForm form){
+    @PostMapping("user/sign-in")
+    public String signIn(PostSignInReq postSignInReq ) {
+       int userIdx = memberService.signIn(postSignInReq);
 
-        Member member = new Member();
-        member.setName(form.getName());
-
-        memberService.join(member);
-
-        return "redirect:/";
-
-    }
-
-    @GetMapping("/members")
-    public String list(Model model) {
-        List<Member> members = memberService.findMembers();
-        model.addAttribute("members", members);
-        return "members/memberList";
+        return "redirect:/home/{userIdx}";
     }
 
 }

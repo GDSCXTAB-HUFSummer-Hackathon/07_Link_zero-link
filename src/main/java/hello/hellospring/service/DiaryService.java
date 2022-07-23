@@ -30,7 +30,4 @@ public class DiaryService {
         return dates;
     }
 
-//    public List<Hashtag> getHashTags() {
-//        return diaryRepository.getHashTags();
-//    }
 }

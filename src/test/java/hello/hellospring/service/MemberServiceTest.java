@@ -1,13 +1,10 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
-import hello.hellospring.repository.MemoryMemberRepository;
-import org.assertj.core.api.Assertions;
+import hello.hellospring.repository.JdbcMemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,11 +15,11 @@ class MemberServiceTest {
     // 빌드 될 때 테스트 코드는 실제 코드에 포함되지 않음
 
     MemberService memberService;
-    MemoryMemberRepository memberRepository;
+    JdbcMemberRepository memberRepository;
 
     @BeforeEach
     public void beforeEach() {
-        memberRepository = new MemoryMemberRepository();
+        memberRepository = new JdbcMemberRepository(jdbcTemplate);
         memberService = new MemberService(memberRepository);
     }
 
