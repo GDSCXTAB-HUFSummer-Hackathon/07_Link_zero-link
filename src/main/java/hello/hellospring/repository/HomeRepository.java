@@ -8,5 +8,5 @@ import java.util.List;
 public interface HomeRepository {
     List<MenuList> getMenuList();
 
-    List<HomeChallenge> getHomeChallengeList();
+    List<HomeChallenge> getHomeChallengeList(int userIdx);
 }

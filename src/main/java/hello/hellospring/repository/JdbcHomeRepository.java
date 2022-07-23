@@ -28,6 +28,7 @@ public class JdbcHomeRepository implements HomeRepository{
 
         return menuLists;
     }
+
     private RowMapper<MenuList> getHomeListMapper() {
         return (rs, rowNum) -> {
             MenuList menuList = new MenuList();
@@ -50,12 +51,13 @@ public class JdbcHomeRepository implements HomeRepository{
     }
 
     @Override
-    public List<HomeChallenge> getHomeChallengeList(){
-        List<HomeChallenge> homeChallenges = jdbcTemplate.query("SELECT challengeName, progress from UserChallenge UC LEFT JOIN Challenge C ON C.challengeIdx = UC.challengeIdx WHERE userIdx = 2;"
-                , getHomeChallengeListMapper());
+    public List<HomeChallenge> getHomeChallengeList(int userIdx){
+        List<HomeChallenge> homeChallenges = jdbcTemplate.query("SELECT challengeName, progress from UserChallenge UC LEFT JOIN Challenge C ON C.challengeIdx = UC.challengeIdx WHERE userIdx = ?;"
+                , getHomeChallengeListMapper(), userIdx);
 
         return homeChallenges;
     }
+
     private RowMapper<HomeChallenge> getHomeChallengeListMapper() {
         return (rs, rowNum) -> {
             HomeChallenge homeChallenges = new HomeChallenge();

@@ -14,6 +14,7 @@ public class HomeService {
     public HomeService(HomeRepository homeRepository){this.homeRepository=homeRepository;}
 
     public List<MenuList> getMenuList() {return homeRepository.getMenuList();}
-    public List<HomeChallenge> getHomeChallengeList() {return homeRepository.getHomeChallengeList();}
+
+    public List<HomeChallenge> getHomeChallengeList(int userIdx) {return homeRepository.getHomeChallengeList(userIdx);}
 
 }
