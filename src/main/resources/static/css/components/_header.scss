@@ -4,8 +4,13 @@ header {
   &#diaryList2 {
     nav {
       ul {
-        li {
-          color: black;
+        a {
+          li {
+            color: black;
+          }
+          &.myPage {
+            color: white;
+          }
         }
       }
     }
@@ -58,6 +63,7 @@ header {
           li {
             font-weight: 400;
             font-size: 20px;
+            color: white;
           }
         }
       }
