@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diary | Zero-Link</title>
+    <link
+      rel="stylesheet"
+      href="./css/style.css"
+      th:href="@{../../../resources/static/css/styles.css}"
+    />
+  </head>
+  <body id="diaryList">
+    <header id="diaryList">
+      <nav>
+        <ul>
+          <a class="logo" href="#">
+            <li>
+              <img
+                src="./photo/logo.png"
+                th:src="@{../../../resources/static/images/logo.png}"
+                alt="logo"
+              />
+              Zero-Link
+            </li>
+          </a>
+          <a href="#">
+            <li>오늘의 상품</li>
+          </a>
+          <a href="#">
+            <li>전체 상품</li>
+          </a>
+          <a href="#">
+            <li>커뮤니티</li>
+          </a>
+          <a href="diaryList.html" th:href="@{}">
+            <li>챌린지</li>
+          </a>
+          <a class="myPage" href="#" th:if="${user.userIdx} == true">
+            <li>My Page</li>
+          </a>
+          <a
+            class="login"
+            href="login.html"
+            th:href="@{/users/sign-in}"
+            th:if="${user.userIdx} == false"
+          >
+            <li>Login</li>
+          </a>
+        </ul>
+      </nav>
+    </header>
+    <div class="btn">
+      <a href="uploadDiary.html" th:href="@{}" class="uploadDiary"
+        >커뮤니티 글 쓰기 <i class="fa-solid fa-pencil"></i
+      ></a>
+    </div>
+    <div class="wrapper">
+      <section class="diary" th:each="diary: ${diaries}">
+        <div class="diary__title">
+          <div class="title__col1">
+            <img
+              src="./photo/apple.png"
+              th:src="@{../../../resources/static/images/apple.png}"
+              alt=""
+            />
+            <div>
+              <p th:text="${diary.username}" class="diary__username">이수민</p>
+              <p th:text="${diary.diaryDate}" class="diary__date">
+                2022-07-23 Sat
+              </p>
+            </div>
+          </div>
+          <div class="title__col2">
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-comment"></i>
+            <i class="fa-solid fa-share-nodes"></i>
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+        </div>
+        <div class="diary__content">
+          <div class="content__wrapper">
+            <img
+              class="uploadImg"
+              src="./photo/tree.png"
+              th:src="${diary.diaryImg}"
+              alt=""
+            />
+            <div>
+              <p th:text="${diary.diaryContent}" class="uploadContent">
+                오늘 친구한테 튤립을 선물 받았다. 원래 이런 애가 아니라서 왜
+                꽃을 주냐하니까 플라워 버킷 챌린지라고 했다. 지명받으면 꽃을
+                사고 선물하는 거라고 했다. 아무 날도 아닌데 꽃 받으니까 기분이
+                좋았다! 화훼 농가도 도와주니까 일석이조?
+              </p>
+              <div class="hashtags">
+                <p th:text="#${diary.hashtag}" class="tag">#장바구니_인증샷</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/271532994e.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
