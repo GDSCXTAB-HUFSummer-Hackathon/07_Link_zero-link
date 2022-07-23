@@ -134,8 +134,11 @@ header {
   position: fixed;
   width: 100%;
 }
-header#diaryList a.login,
-header#diaryList a.logout {
+header#diaryList2 nav ul li {
+  color: black;
+}
+header#diaryList2 a.login,
+header#diaryList2 a.logout {
   background-color: rgb(218, 198, 151);
 }
 header nav ul {
