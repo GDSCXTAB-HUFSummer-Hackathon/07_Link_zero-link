@@ -1119,24 +1119,32 @@ body#diaryList .wrapper section.diary .diary__content .content__wrapper div div.
   justify-content: flex-end;
   align-items: center;
 }
-.writing__wrapper .writing form .form__wrapper .btns input,
 .writing__wrapper .writing form .form__wrapper .btns a {
-  padding: 18px;
   margin: 8px;
   color: white;
   border: none;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-}
-.writing__wrapper .writing form .form__wrapper .btns input {
   padding: 15px;
-  background-color: #3498db;
-}
-.writing__wrapper .writing form .form__wrapper .btns a {
   background-color: #bebebe;
 }
-
+.writing__wrapper .writing form .form__wrapper .btns a.submitBtn {
+  background-color: #3498db;
+  color: white;
+  padding: 0px;
+  margin: 0px;
+}
+.writing__wrapper .writing form .form__wrapper .btns a input {
+  margin: 8px;
+  color: white;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px;
+  background-color: #3498db;
+}
 @media screen and (max-width: 1100px) {
   .writing__wrapper {
     padding: 90px 50px;
@@ -1182,15 +1190,19 @@ body#diaryList .wrapper section.diary .diary__content .content__wrapper div div.
   .writing__wrapper .writing form .form__wrapper .checkbox div span {
     font-size: 13px;
   }
-  .writing__wrapper .writing form .form__wrapper .btns input,
-.writing__wrapper .writing form .form__wrapper .btns a {
+  .writing__wrapper .writing form .form__wrapper .btns a {
     font-size: 15px;
-    padding: 10px;
+    padding: 13px;
   }
-  .writing__wrapper .writing form .form__wrapper .btns input {
-    padding: 8px;
+  .writing__wrapper .writing form .form__wrapper .btns a input {
+    padding: 1px;
   }
 }
+body#calendar {
+  background: none;
+  background-color: #fee7b0;
+}
+
 * {
   box-sizing: border-box;
 }
