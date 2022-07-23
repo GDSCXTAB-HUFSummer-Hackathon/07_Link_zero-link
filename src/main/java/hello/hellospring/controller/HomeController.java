@@ -21,7 +21,7 @@ public class HomeController {
         this.homeService = homeService;
     }
 
-    @GetMapping("/home") // localhost:8080이 들어오면
+    @GetMapping("/home") // home페이지
     public String home(Model model) {
 
         List<HomeChallenge> homeChallenges = homeService.getHomeChallengeList();
@@ -29,6 +29,10 @@ public class HomeController {
         model.addAttribute("homeChallenges", homeChallenges);
         model.addAttribute("menus", menus);
 
-        return "home/home";
+        return "home/main";
     }
+
+
+
+
 }
