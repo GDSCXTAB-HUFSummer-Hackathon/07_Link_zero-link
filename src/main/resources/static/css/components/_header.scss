@@ -1,7 +1,14 @@
 header {
   position: fixed;
   width: 100%;
-  &#diaryList {
+  &#diaryList2 {
+    nav {
+      ul {
+        li {
+          color: black;
+        }
+      }
+    }
     a.login,
     a.logout {
       background-color: rgb(218, 198, 151);

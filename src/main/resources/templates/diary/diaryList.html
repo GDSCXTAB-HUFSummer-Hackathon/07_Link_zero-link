@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,7 +12,7 @@
     />
   </head>
   <body id="diaryList">
-    <header id="diaryList">
+    <header id="diaryList2">
       <nav>
         <ul>
           <a class="logo" href="#">
@@ -37,16 +37,8 @@
           <a href="diaryList.html">
             <li>챌린지</li>
           </a>
-          <a class="myPage" href="#" th:if="${user.userIdx} == true">
+          <a class="myPage" href="#">
             <li>My Page</li>
-          </a>
-          <a
-            class="login"
-            href="login.html"
-            th:href="@{/users/sign-in}"
-            th:if="${user.userIdx} == false"
-          >
-            <li>Login</li>
           </a>
         </ul>
       </nav>
