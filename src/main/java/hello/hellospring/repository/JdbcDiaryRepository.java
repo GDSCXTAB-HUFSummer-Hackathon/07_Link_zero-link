@@ -40,6 +40,9 @@ public class JdbcDiaryRepository implements DiaryRepository{
             diaryList.setDiaryImg(rs.getString("diaryImg"));
             diaryList.setDiaryDate(rs.getString("diaryDate"));
             diaryList.setStatus(rs.getString("status"));
+            diaryList.setHashtag(jdbcTemplate.queryForObject("SELECT H.hashtagContent, DH.diaryIdx\n" +
+                    "FROM DiaryHashtag DH JOIN Hashtag H on DH.hashtagIdx = H.hashtagIdx\n" +
+                    "WHERE diaryIdx=?;", String.class, rs.getInt("diaryIdx")));
             return diaryList;
         };
     }

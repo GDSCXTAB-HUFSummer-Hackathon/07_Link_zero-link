@@ -25,12 +25,12 @@ public class DiaryController {
     @GetMapping("diary")
     public String getDiaryList(Model model){
         List<DiaryList> diaries = diaryService.getDiaryList();
-        List<Hashtag> hashtags = diaryService.getHashTags();
+//        List<Hashtag> hashtags = diaryService.getHashTags();
         model.addAttribute("diaries", diaries);
-        model.addAttribute("hashtags", hashtags);
-        for (Hashtag hashtag : hashtags) {
-            System.out.println("hashtag = " + hashtag);
-        }
+//        model.addAttribute("hashtags", hashtags);
+//        for (Hashtag hashtag : hashtags) {
+//            System.out.println("hashtag = " + hashtag);
+//        }
         for (DiaryList diary : diaries) {
             System.out.println("diary = " + diary);
         }

@@ -8,6 +8,7 @@ public class DiaryList {
     private String diaryImg;
     private String diaryDate;
     private String status;
+    private String hashtag;
 //    private List<String> hashtags;
 
     public int getUserIdx() {
@@ -66,4 +67,11 @@ public class DiaryList {
         this.status = status;
     }
 
+    public String getHashtag() {
+        return hashtag;
+    }
+
+    public void setHashtag(String hashtag) {
+        this.hashtag = hashtag;
+    }
 }
