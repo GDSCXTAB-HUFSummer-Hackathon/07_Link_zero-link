@@ -1,5 +1,8 @@
 package hello.hellospring.domain;
 
+import lombok.ToString;
+
+@ToString
 public class DiaryList {
     private int userIdx;
     private String username;
