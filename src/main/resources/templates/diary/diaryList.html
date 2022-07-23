@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,7 +8,7 @@
     <link
       rel="stylesheet"
       href="./css/style.css"
-      th:href="@{../../../resources/static/css/styles.css}"
+      th:href="@{/css/style.css}"
     />
   </head>
   <body id="diaryList">
@@ -34,7 +34,7 @@
           <a href="#">
             <li>커뮤니티</li>
           </a>
-          <a href="diaryList.html" th:href="@{}">
+          <a href="diaryList.html">
             <li>챌린지</li>
           </a>
           <a class="myPage" href="#">
@@ -44,12 +44,12 @@
       </nav>
     </header>
     <div class="btn">
-      <a href="uploadDiary.html" th:href="@{}" class="uploadDiary"
+      <a href="uploadDiary.html" class="uploadDiary"
         >커뮤니티 글 쓰기 <i class="fa-solid fa-pencil"></i
       ></a>
     </div>
     <div class="wrapper">
-      <section class="diary" th:each="diary: ${diaries}">
+      <section class="diary" th:each="diary : ${diaries}">
         <div class="diary__title">
           <div class="title__col1">
             <img
@@ -87,7 +87,7 @@
                 좋았다! 화훼 농가도 도와주니까 일석이조?
               </p>
               <div class="hashtags">
-                <p th:text="#${diary.hashtag}" class="tag">#장바구니_인증샷</p>
+                <p th:text="${diary.hashtag}" class="tag">#장바구니_인증샷</p>
               </div>
             </div>
           </div>

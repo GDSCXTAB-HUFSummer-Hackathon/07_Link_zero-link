@@ -35,7 +35,9 @@ public class DiaryController {
 //            System.out.println("hashtag = " + hashtag);
 //        }
         for (DiaryList diary : diaries) {
-            System.out.println("diary = " + diary);
+            System.out.println("diary = " + diary.getUserIdx());
+            System.out.println("diary = " + diary.getUsername());
+
         }
         return "diary/diaryList";
     }
