@@ -18,13 +18,12 @@ public class JdbcHomeRepository implements HomeRepository{
 
     @Override
     public List<MenuList> getMenuList(){
-        List<MenuList> menuLists = jdbcTemplate.query("select M.menuIdx, M.menuImg, M.menuName, M.menuQuantity, M.menuOriginalPrice, M.menuDiscountPrice, M.status as menuStatus,\n" +
-                "       R.restaurantIdx, R.closeTime, R.restaurantPhone, R.restaurantName, R.status as restaurantStatus,\n" +
-                "       concat(round(6371*acos(cos(radians(?))\n" +
-                "                                  *cos(radians(R.lattitude))*cos(radians(R.longitude)\n" +
-                "               -radians(?))+sin(radians(?))*sin(radians(R.lattitude))), 1), 'km') AS distance\n" +
-                "from Restaurant R LEFT JOIN Menu M ON R.restaurantIdx = M.restaurantIdx\n" +
-                "WHERE R.restaurantIdx=?\n" +
+        List<MenuList> menuLists = jdbcTemplate.query("select M.menuIdx, M.menuImg, M.menuName, M.menuQuantity, M.menuOriginalPrice, " +
+                "M.menuDiscountPrice, M.status as menuStatus, R.restaurantIdx, R.closeTime, R.restaurantPhone, R.restaurantName, " +
+                "R.status as restaurantStatus, round(6371*acos(cos(radians(37.5974476))*cos(radians(R.lattitude))" +
+                "*cos(radians(R.longitude)-radians(127.058748))+sin(radians(37.5974476))*sin(radians(R.lattitude))), 1) " +
+                "AS distance from Restaurant R LEFT JOIN Menu M ON R.restaurantIdx = M.restaurantIdx " +
+                "WHERE R.restaurantIdx=2 HAVING distance < 1;" +
                 "HAVING distance <= 10;", getHomeListMapper());
 
         return menuLists;

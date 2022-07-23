@@ -48,7 +48,7 @@ public class JdbcDiaryRepository implements DiaryRepository{
 
     @Override
     public List<Integer> getCalendar(int userIdx, int year, int month) {
-        String Query = "SELECT DISTINCT FORMATDATETIME(diaryDate, 'dd') FROM Diary WHERE userIdx=? AND FORMATDATETIME(diaryDate, 'yyyy') = ? AND FORMATDATETIME(diaryDate, 'mm') = ? AND status='Y';";
+        String Query = "SELECT DISTINCT FORMATDATETIME(diaryDate, 'dd') FROM Diary WHERE userIdx=? AND FORMATDATETIME(diaryDate, 'yyyy') = ? AND FORMATDATETIME(diaryDate, 'MM') = ? AND status='Y';";
         List<Integer> dates = jdbcTemplate.query(Query, getDateMapper(), userIdx, Integer.toString(year), Integer.toString(month));
         return dates;
     }

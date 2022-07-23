@@ -20,7 +20,7 @@ public class HomeController {
         this.homeService = homeService;
     }
 
-    @GetMapping("") // localhost:8080이 들어오면
+    @GetMapping("/home") // localhost:8080이 들어오면
     public String home(Model model) {
 
         List<MenuList> menus = homeService.getMenuList();
