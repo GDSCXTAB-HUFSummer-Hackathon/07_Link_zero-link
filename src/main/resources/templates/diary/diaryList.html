@@ -19,7 +19,7 @@
             <li>
               <img
                 src="./photo/logo.png"
-                th:src="@{../../../resources/static/images/logo.png}"
+                th:src="@{/images/logo.png}"
                 alt="logo"
               />
               Zero-Link
@@ -34,7 +34,7 @@
           <a href="#">
             <li>커뮤니티</li>
           </a>
-          <a href="diaryList.html">
+          <a href="diaryList.html" th:href="@{/diary}">
             <li>챌린지</li>
           </a>
           <a class="myPage" href="#">
@@ -54,7 +54,7 @@
           <div class="title__col1">
             <img
               src="./photo/apple.png"
-              th:src="@{../../../resources/static/images/apple.png}"
+              th:src="@{/images/apple.png}"
               alt=""
             />
             <div>

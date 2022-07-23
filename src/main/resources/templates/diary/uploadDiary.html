@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Diary | Zero-Link</title>
+    <link
+      rel="stylesheet"
+      href="./css/style.css"
+      th:href="@{/css/styles.css}"
+    />
+  </head>
+  <body id="diaryList">
+    <header id="diaryList2">
+      <nav>
+        <ul>
+          <a class="logo" href="#">
+            <li>
+              <img
+                src="./photo/logo.png"
+                th:src="@{/images/logo.png}"
+                alt="logo"
+              />
+              Zero-Link
+            </li>
+          </a>
+          <a href="#">
+            <li>오늘의 상품</li>
+          </a>
+          <a href="#">
+            <li>전체 상품</li>
+          </a>
+          <a href="#">
+            <li>커뮤니티</li>
+          </a>
+          <a href="#">
+            <li>챌린지</li>
+          </a>
+          <a class="myPage" href="#">
+            <li>My Page</li>
+          </a>
+        </ul>
+      </nav>
+    </header>
+    <div class="writing__wrapper">
+      <div class="todayDate"></div>
+      <section class="writing">
+        <form method="POST">
+          <div class="form__wrapper">
+            <p class="text__title">내용</p>
+            <input
+              class="textPlace"
+              name="diaryContent"
+              type="text"
+              placeholder="텍스트 작성"
+              required
+            />
+            <input
+              class="fileBtn"
+              name="diaryImg"
+              type="file"
+              placeholder="사진 업로드"
+            />
+            <input name="hashtags" type="text" placeholder="해시태그 작성" />
+            <div class="checkbox">
+              <p class="isPublic__title">게시글 설정</p>
+              <div>
+                <input name="isPublic" type="checkbox" value="public" /><span
+                  >공개 커뮤니티</span
+                >
+                <input name="isPublic" type="checkbox" value="private" /><span
+                  >개인 다이어리</span
+                >
+              </div>
+            </div>
+            <div class="btns">
+              <input type="submit" value="작성" />
+              <a href="#">취소</a>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+    <script src="./js/todayDate.js" th:src="@{/js/todayDate.js}"></script>
+  </body>
+</html>
