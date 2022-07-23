@@ -37,6 +37,7 @@ public class JdbcDiaryRepository implements DiaryRepository{
         SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
         jdbcInsert.withTableName("diary").usingGeneratedKeyColumns("diaryIdx");
         Map<String, Object> parameters = new HashMap<>();
+        parameters.put("userIdx", userIdx);
         parameters.put("diaryContent", diary.getDiaryContent());
         parameters.put("diaryDate", diary.getDiaryDate());
         parameters.put("isPublic", diary.getIsPublic());
@@ -45,11 +46,18 @@ public class JdbcDiaryRepository implements DiaryRepository{
                 MapSqlParameterSource(parameters));
     }
 
-//    @Override
-//    public List<Hashtag> getHashTags() {
-//        List<Hashtag> hashtag = jdbcTemplate.query("SELECT H.hashtagContent, DH.diaryIdx FROM DiaryHasgtag DH JOIN Hashtag H on DH.hashtagIdx = H.hashtagIdx;", getDiaryHashtagList());
-//        return hashtag;
-//    }
+    @Override
+    public List<Integer> getCalendar(int userIdx, int year, int month) {
+        String Query = "SELECT DISTINCT FORMATDATETIME(diaryDate, 'dd') FROM Diary WHERE userIdx=? AND FORMATDATETIME(diaryDate, 'yyyy') = ? AND FORMATDATETIME(diaryDate, 'mm') = ? AND status='Y';";
+        List<Integer> dates = jdbcTemplate.query(Query, getDateMapper(), userIdx, Integer.toString(year), Integer.toString(month));
+        return dates;
+    }
+
+    private RowMapper<Integer> getDateMapper() {
+        return (rs, rowNum) -> {
+            return rs.getInt("date");
+        };
+    }
 
     private RowMapper<DiaryList> getDiaryListMapper() {
         return (rs, rowNum) -> {
