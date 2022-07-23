@@ -1,0 +1,198 @@
+body#diaryList {
+  background: none;
+  background-color: #fee7b0;
+  height: 100vh;
+  .btn {
+    padding-top: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 60px;
+    a.uploadDiary {
+      padding: 15px 0px;
+      width: 250px;
+      border-radius: 10px;
+      background-color: rgb(218, 198, 151);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      font-size: 22px;
+      font-weight: 600;
+      i {
+        margin-left: 10px;
+        font-size: 30px;
+        color: black;
+      }
+    }
+  }
+  .wrapper {
+    padding: 40px 130px;
+    section.diary {
+      padding: 30px;
+      border-radius: 30px;
+      background-color: white;
+      .diary__title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .title__col1 {
+          display: flex;
+          align-items: center;
+          img {
+            width: 85px;
+            margin-right: 12px;
+          }
+          div {
+            p {
+              color: black;
+              font-size: 23px;
+              font-weight: 600;
+              &.diary__username {
+                margin-bottom: 4px;
+              }
+            }
+          }
+        }
+
+        .title__col2 {
+          i {
+            color: black;
+            font-size: 28px;
+            margin-right: 15px;
+          }
+        }
+      }
+      .diary__content {
+        .content__wrapper {
+          padding: 0px 60px;
+          display: flex;
+          align-items: center;
+          img.uploadImg {
+            width: 300px;
+            margin-bottom: 25px;
+            margin-right: 20px;
+          }
+          div {
+            p.uploadContent {
+              color: black;
+              font-size: 23px;
+              line-height: 2;
+            }
+            div.hashtags {
+              margin-top: 11px;
+              display: flex;
+              p.tag {
+                color: #2591ff;
+                font-size: 16px;
+                margin-right: 7px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $tabletSize) {
+  body#diaryList {
+    .btn {
+      a.uploadDiary {
+        padding: 10px 5px;
+        width: 180px;
+        border-radius: 10px;
+        background-color: rgb(218, 198, 151);
+        font-size: 18px;
+        i {
+          margin-left: 5px;
+          font-size: 20px;
+        }
+      }
+    }
+    .wrapper {
+      padding: 40px 30px;
+      section.diary {
+        .diary__title {
+          .title__col1 {
+            img {
+              width: 50px;
+            }
+          }
+        }
+        .diary__content {
+          .content__wrapper {
+            padding: 30px;
+            img.uploadImg {
+              width: 230px;
+              margin-right: 45px;
+            }
+            div {
+              p.uploadContent {
+                width: 100%;
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mobileSize) {
+  body#diaryList {
+    .btn {
+      padding-top: 90px;
+      padding-right: 10px;
+      a.uploadDiary {
+        width: 140px;
+        font-size: 13px;
+        i {
+          font-size: 12px;
+        }
+      }
+    }
+    .wrapper {
+      padding: 10px;
+      section.diary {
+        padding: 18px;
+        .diary__title {
+          .title__col1 {
+            img {
+              width: 25px;
+            }
+            p {
+              font-size: 15px;
+            }
+          }
+          .title__col2 {
+            i {
+              font-size: 18px;
+              margin-right: 10px;
+            }
+          }
+        }
+        .diary__content {
+          .content__wrapper {
+            flex-direction: column;
+            img.uploadImg {
+              margin-right: 0px;
+              margin-bottom: 20px;
+            }
+            div {
+              p.uploadContent {
+                font-size: 16px;
+              }
+              div.hashtags {
+                p.tag {
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
