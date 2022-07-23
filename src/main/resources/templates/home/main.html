@@ -52,7 +52,7 @@
           <a
             class="logout"
             href="#"
-            th:href="#"
+            th:href="@{/home}"
             th:if="${homeChallenges} == true"
           >
             <li>Logout</li>
@@ -144,9 +144,9 @@
           <div class="page2__col3">
             <div class="tree">
               <img src="./photo/tree.png" th:src="@{/images/tree.png}" alt="" />
-              <p class="data1" th:text="${homeChallenges.progress}">100</p>
-              <p class="data2" th:text="${homeChallenges.progress}">200</p>
-              <p class="data3" th:text="${homeChallenges.progress}">300</p>
+              <p class="data1" th:text="${homeChallenges}? '${homeChallenges.progress}' : '0'">100</p>
+              <p class="data2" th:text="${homeChallenges}? '${homeChallenges.progress}' : '0'">200</p>
+              <p class="data3" th:text="${homeChallenges}? '${homeChallenges.progress}' : '0'">300</p>
               <p class="noJoin" th:if="${homeChallenges} == false">
                 회원가입해서 챌린지에 도전해보세요!
               </p>
@@ -177,17 +177,18 @@
           <li class="menu" th:each="menu : ${menus}">
             <img src="./photo/apple.png" th:src="@{${menu.menuImg}}" alt="" />
             <div class="menu__info">
-              <p
-                class="info__store"
-                th:text="가게: ${menu.restaurantName} (거리: ${menu.distance})"
-              >
-                가게: 모닝브레드 (1.2km)
+              <p class="info__store">
+                가게:
+                <span th:text="${menu.restaurantName}">모닝브레드</span> (<span
+                      th:text="${menu.distance}"
+              >1.2km</span
+              >)
               </p>
-              <p
-                class="info__menu"
-                th:text="상품: ${menu.menuName} (상품개수: ${menu.menuQuantity}개)"
-              >
-                상품: 피자빵 (3개)
+              <p class="info__menu">
+                상품: <span th:text="${menu.menuName}">피자빵</span>(<span
+                      th:text="${menu.menuQuantity}개"
+              >3개</span
+              >)
               </p>
               <p class="info__price" th:text="${menu.menuDiscountPrice}원">
                 <del th:text="${menu.menuOriginalPrice}">4,000원</del>2,500원
