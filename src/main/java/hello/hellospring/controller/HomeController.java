@@ -1,6 +1,7 @@
 package hello.hellospring.controller;
 
 
+import hello.hellospring.domain.HomeChallenge;
 import hello.hellospring.domain.MenuList;
 import hello.hellospring.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,9 @@ public class HomeController {
     @GetMapping("/home") // localhost:8080이 들어오면
     public String home(Model model) {
 
+        List<HomeChallenge> homeChallenges = homeService.getHomeChallengeList();
         List<MenuList> menus = homeService.getMenuList();
+        model.addAttribute("homeChallenges", homeChallenges);
         model.addAttribute("menus", menus);
 
         return "home/home";

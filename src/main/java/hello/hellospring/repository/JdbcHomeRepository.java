@@ -1,6 +1,6 @@
 package hello.hellospring.repository;
 
-import hello.hellospring.domain.DiaryList;
+import hello.hellospring.domain.HomeChallenge;
 import hello.hellospring.domain.MenuList;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -46,6 +46,23 @@ public class JdbcHomeRepository implements HomeRepository{
             menuList.setRestaurantStatus(rs.getString("restaurantStatus"));
 
             return menuList;
+        };
+    }
+
+    @Override
+    public List<HomeChallenge> getHomeChallengeList(){
+        List<HomeChallenge> homeChallenges = jdbcTemplate.query("SELECT challengeName, progress from UserChallenge UC LEFT JOIN Challenge C ON C.challengeIdx = UC.challengeIdx WHERE userIdx = 2;"
+                , getHomeChallengeListMapper());
+
+        return homeChallenges;
+    }
+    private RowMapper<HomeChallenge> getHomeChallengeListMapper() {
+        return (rs, rowNum) -> {
+            HomeChallenge homeChallenges = new HomeChallenge();
+            homeChallenges.setChallengeName(rs.getString("challengeName"));
+            homeChallenges.setProgress(rs.getInt("progress"));
+
+            return homeChallenges;
         };
     }
 
