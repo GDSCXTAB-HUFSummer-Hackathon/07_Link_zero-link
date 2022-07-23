@@ -186,12 +186,12 @@
               </p>
               <p class="info__menu">
                 상품: <span th:text="${menu.menuName}">피자빵</span>(<span
-                      th:text="${menu.menuQuantity}개"
+                      th:text="${menu.menuQuantity} + '개'"
               >3개</span
               >)
               </p>
-              <p class="info__price" th:text="${menu.menuDiscountPrice}원">
-                <del th:text="${menu.menuOriginalPrice}">4,000원</del>2,500원
+              <p class="info__price" th:text="${menu.menuDiscountPrice} + '원'">
+                <del th:text="${menu.menuOriginalPrice} + '원'">4,000원</del>2,500원
               </p>
             </div>
           </li>
