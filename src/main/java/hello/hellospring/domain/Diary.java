@@ -1,16 +1,28 @@
 package hello.hellospring.domain;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+
 import java.util.Date;
-import java.util.List;
 
 public class Diary {
     private int diaryIdx;
     private String diaryContent;
     private String diaryImg;
     private Date diaryDate;
-    private List<String> hashtags;
+    private String hashtag;
     private String isPublic;
     private String status;
+
+    public Diary() {
+    }
+
+    public Diary(String diaryContent, String diaryImg, Date diaryDate, String hashtag, String isPublic) {
+        this.diaryContent = diaryContent;
+        this.diaryImg = diaryImg;
+        this.diaryDate = diaryDate;
+        this.hashtag = hashtag;
+        this.isPublic = isPublic;
+    }
 
     public int getDiaryIdx() {
         return diaryIdx;
@@ -44,12 +56,12 @@ public class Diary {
         this.diaryDate = diaryDate;
     }
 
-    public List<String> getHashtags() {
-        return hashtags;
+    public String getHashtag() {
+        return hashtag;
     }
 
-    public void setHashtags(List<String> hashtags) {
-        this.hashtags = hashtags;
+    public void setHashtag(String hashtag) {
+        this.hashtag = hashtag;
     }
 
     public String getIsPublic() {

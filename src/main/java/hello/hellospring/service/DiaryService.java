@@ -1,5 +1,6 @@
 package hello.hellospring.service;
 
+import hello.hellospring.domain.Diary;
 import hello.hellospring.domain.DiaryList;
 import hello.hellospring.domain.Hashtag;
 import hello.hellospring.repository.DiaryRepository;
@@ -18,6 +19,10 @@ public class DiaryService {
 
     public List<DiaryList> getDiaryList() {
         return diaryRepository.getDiaryList();
+    }
+
+    public void save(Diary diary, int userIdx) {
+        diaryRepository.save(diary, userIdx);
     }
 
 //    public List<Hashtag> getHashTags() {

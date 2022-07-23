@@ -5,10 +5,14 @@ import hello.hellospring.domain.DiaryList;
 import hello.hellospring.domain.Hashtag;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class JdbcDiaryRepository implements DiaryRepository{
@@ -26,6 +30,19 @@ public class JdbcDiaryRepository implements DiaryRepository{
                 getDiaryListMapper());
         return diaryLists;
 
+    }
+
+    @Override
+    public void save(Diary diary, int userIdx) {
+        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
+        jdbcInsert.withTableName("diary").usingGeneratedKeyColumns("userIdx");
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("diaryContent", diary.getDiaryContent());
+        parameters.put("diaryDate", diary.getDiaryDate());
+        parameters.put("isPublic", diary.getIsPublic());
+        parameters.put("diaryImg", diary.getDiaryImg());
+        Number key = jdbcInsert.executeAndReturnKey(new
+                MapSqlParameterSource(parameters));
     }
 
 //    @Override
