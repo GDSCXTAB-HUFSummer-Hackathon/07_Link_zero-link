@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar | Zero-Link</title>
+    <link
+      rel="stylesheet"
+      href="./css/style.css"
+      th:href="@{/css/style.css}"
+    />
+  </head>
+  <body id="calendar">
+    <header id="diaryList2">
+      <nav>
+        <ul>
+          <a class="logo" href="#">
+            <li>
+              <img
+                src="./photo/logo.png"
+                th:src="@{/images/logo.png}"
+                alt="logo"
+              />
+              Zero-Link
+            </li>
+          </a>
+          <a href="#">
+            <li>오늘의 상품</li>
+          </a>
+          <a href="#">
+            <li>전체 상품</li>
+          </a>
+          <a href="#">
+            <li>커뮤니티</li>
+          </a>
+          <a href="diaryList.html" th:href="@{/diary}">
+            <li>챌린지</li>
+          </a>
+          <a class="myPage" href="#">
+            <li>My Page</li>
+          </a>
+        </ul>
+      </nav>
+    </header>
+    <section id="july">
+      <h2>2022년 7월</h2>
+      <div class="grid">
+          <div class="sun">Sun</div>
+          <div class="mon">Mon</div>
+          <div class="tue">Tue</div>
+          <div class="wed">Wed</div>
+          <div class="thu">Thu</div>
+          <div class="fri">Fri</div>
+          <div class="sat">Sat</div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div th:class="${#lists.contains(dates,1)}? 'stamp' : 'noStamp'">1</div>
+          <div th:class="${#lists.contains(dates,2)}? 'stamp' : 'noStamp'">2</div>
+          <div th:class="${#lists.contains(dates,3)}? 'stamp' : 'noStamp'">3</div>
+          <div th:class="${#lists.contains(dates,4)}? 'stamp' : 'noStamp'">4</div>
+          <div th:class="${#lists.contains(dates,5)}? 'stamp' : 'noStamp'">5</div>
+          <div th:class="${#lists.contains(dates,6)}? 'stamp' : 'noStamp'">6</div>
+          <div th:class="${#lists.contains(dates,7)}? 'stamp' : 'noStamp'">7</div>
+          <div th:class="${#lists.contains(dates,8)}? 'stamp' : 'noStamp'">8</div>
+          <div th:class="${#lists.contains(dates,9)}? 'stamp' : 'noStamp'">9</div>
+          <div th:class="${#lists.contains(dates,10)}? 'stamp' : 'noStamp'">10</div>
+          <div th:class="${#lists.contains(dates,11)}? 'stamp' : 'noStamp'">11</div>
+          <div th:class="${#lists.contains(dates,12)}? 'stamp' : 'noStamp'">12</div>
+          <div th:class="${#lists.contains(dates,13)}? 'stamp' : 'noStamp'">13</div>
+          <div th:class="${#lists.contains(dates,14)}? 'stamp' : 'noStamp'">14</div>
+          <div th:class="${#lists.contains(dates,15)}? 'stamp' : 'noStamp'">15</div>
+          <div th:class="${#lists.contains(dates,16)}? 'stamp' : 'noStamp'">16</div>
+          <div th:class="${#lists.contains(dates,17)}? 'stamp' : 'noStamp'">17</div>
+          <div th:class="${#lists.contains(dates,18)}? 'stamp' : 'noStamp'">18</div>
+          <div th:class="${#lists.contains(dates,19)}? 'stamp' : 'noStamp'">19</div>
+          <div th:class="${#lists.contains(dates,20)}? 'stamp' : 'noStamp'">20</div>
+          <div th:class="${#lists.contains(dates,21)}? 'stamp' : 'noStamp'">21</div>
+          <div th:class="${#lists.contains(dates,22)}? 'stamp' : 'noStamp'">22</div>
+          <div th:class="${#lists.contains(dates,23)}? 'stamp' : 'noStamp'">23</div>
+          <div th:class="${#lists.contains(dates,24)}? 'stamp' : 'noStamp'">24</div>
+          <div th:class="${#lists.contains(dates,25)}? 'stamp' : 'noStamp'">25</div>
+          <div th:class="${#lists.contains(dates,26)}? 'stamp' : 'noStamp'">26</div>
+          <div th:class="${#lists.contains(dates,27)}? 'stamp' : 'noStamp'">27</div>
+          <div th:class="${#lists.contains(dates,28)}? 'stamp' : 'noStamp'">28</div>
+          <div th:class="${#lists.contains(dates,29)}? 'stamp' : 'noStamp'">29</div>
+          <div th:class="${#lists.contains(dates,30)}? 'stamp' : 'noStamp'">30</div>
+          <div th:class="${#lists.contains(dates,31)}? 'stamp' : 'noStamp'">31</div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </section>
+    <script src="./js/stamp.js" th:src="@{/js/stamp.js}"></script>
+  </body>
+</html>
