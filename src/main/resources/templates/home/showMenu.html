@@ -61,7 +61,7 @@
             <i
               class="fa-solid fa-angle-right"
             ></i>
-            <span th:text="${menu.menuName}">모닝브레드</span> (<span th:text="${menu.restaurant.distance}">이문동</span>)
+            <span th:text="${menu.menuName}">모닝브레드</span> (<span th:text="${restaurant.distance}">이문동</span>)
           </p>
           <p>상품명: <span th:text="${menu.menuName}">피자빵</span></p>
           <p>수량: <span th:text="${menu.menuQuantity}">3</span>개</p>
@@ -71,11 +71,11 @@
           </p>
           <p><i class="fa-solid fa-circle-info"></i>매장 픽업, 직접 결제</p>
           <p>
-            <i class="fa-solid fa-clock"></i>운영 시간: <span th:text="${menu.restaurant.closeTime}">22</span>시
+            <i class="fa-solid fa-clock"></i>운영 시간: <span th:text="${restaurant.closeTime}">22</span>시
           </p>
           <p>
             <i class="fa-solid fa-mobile-screen-button"></i>연락처:
-            <span th:text="${menu.restaurant.restaurantPhone}">010-1234-5678</span>
+            <span th:text="${restaurant.restaurantPhone}">010-1234-5678</span>
           </p>
         </div>
       </div>
