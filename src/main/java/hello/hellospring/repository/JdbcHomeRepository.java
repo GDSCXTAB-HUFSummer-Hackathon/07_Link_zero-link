@@ -1,7 +1,6 @@
 package hello.hellospring.repository;
 
-import hello.hellospring.domain.HomeChallenge;
-import hello.hellospring.domain.MenuList;
+import hello.hellospring.domain.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -57,6 +56,49 @@ public class JdbcHomeRepository implements HomeRepository{
         return homeChallenges;
     }
 
+    @Override
+    public Menu getMenu(int menuIdx) {
+
+        // 메뉴
+        String getMenuQuery2 = "select M.menuIdx, M.menuImg, M.menuName, M.menuQuantity, M.menuOriginalPrice, M.menuDiscountPrice, M.status as menuStatus, R.restaurantIdx\n" +
+                "from Restaurant R LEFT JOIN Menu M ON R.restaurantIdx = M.restaurantIdx\n" +
+                "where M.menuIdx=?;";
+
+        Menu menu = jdbcTemplate.queryForObject(getMenuQuery2, getMenuMapper(), menuIdx);
+        return menu;
+    }
+
+    private RowMapper<Menu> getMenuMapper() {
+        // 식당
+        String getUsersQuery1 = "select R.restaurantIdx, R.closeTime, R.restaurantPhone, R.restaurantName, R.status as restaurantStatus\n" +
+                "from Restaurant R\n" +
+                "WHERE R.restaurantIdx=?;";
+
+        return (rs, rowNum) -> {
+            Menu menu = new Menu();
+            menu.setMenuIdx(rs.getInt("menuIdx"));
+            menu.setMenuImg(rs.getString("menuImg"));
+            menu.setMenuName(rs.getString("menuName"));
+            menu.setMenuQuantity(rs.getInt("menuQuantity"));
+            menu.setMenuOriginalPrice(rs.getInt("menuOriginalPrice"));
+            menu.setMenuDiscountPrice(rs.getInt("menuDiscountPrice"));
+            menu.setMenuStatus(rs.getString("menuStatus"));
+            jdbcTemplate.queryForObject(getUsersQuery1, getRestaurant(), rs.getInt("restaurantIdx"));
+            return menu;
+        };
+    }
+
+    private RowMapper<Restaurant> getRestaurant() {
+        return (rs, rowNum) -> {
+            Restaurant restaurant = new Restaurant();
+            restaurant.setRestaurantIdx(rs.getInt("restaurantIdx"));
+            restaurant.setRestaurantName(rs.getString("restaurantName"));
+            restaurant.setCloseTime(rs.getInt("closeTime"));
+            restaurant.setRestaurantPhone(rs.getString("restaurantPhone"));
+            restaurant.setRestaurantStatus(rs.getString("restaurantStatus"));
+            return restaurant;
+        };
+    }
     private RowMapper<HomeChallenge> getHomeChallengeListMapper() {
         return (rs, rowNum) -> {
             HomeChallenge homeChallenges = new HomeChallenge();

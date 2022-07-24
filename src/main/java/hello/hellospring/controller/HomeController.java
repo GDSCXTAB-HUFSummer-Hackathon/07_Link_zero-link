@@ -1,7 +1,9 @@
 package hello.hellospring.controller;
 
 
+import hello.hellospring.domain.GetMenuRes;
 import hello.hellospring.domain.HomeChallenge;
+import hello.hellospring.domain.Menu;
 import hello.hellospring.domain.MenuList;
 import hello.hellospring.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +47,10 @@ public class HomeController {
         return "home/main";
     }
 
-
-
-
+    @GetMapping("/menu/{menuIdx}")
+    public String getMenu(Model model, @PathVariable(value = "menuIdx") int menuIdx) {
+        Menu menu = homeService.getMenu(menuIdx);
+        model.addAttribute("menu", menu);
+        return "home/showMenu";
+    }
 }
