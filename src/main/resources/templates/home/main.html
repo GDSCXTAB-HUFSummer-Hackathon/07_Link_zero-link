@@ -44,10 +44,18 @@
           <a
             class="login"
             href="login.html"
-            th:href="@{/users/sign-in}"
+            th:href="@{/user/sign-in}"
             th:if="${homeChallenges} == null"
           >
             <li>Login</li>
+          </a>
+          <a
+                  class="login"
+                  href="login.html"
+                  th:href="@{/user/sign-up}"
+                  th:if="${homeChallenges} == null"
+          >
+            <li>Join</li>
           </a>
           <a
             class="logout"

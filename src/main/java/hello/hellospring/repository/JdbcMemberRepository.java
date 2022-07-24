@@ -45,7 +45,7 @@ public class JdbcMemberRepository implements MemberRepository {
 
     @Override
     public int getUserIdx(String id) {
-        String Query = "SELECT userIdx FROM User WHERE id=?";
+        String Query = "SELECT userIdx FROM Member WHERE id=?";
         return jdbcTemplate.queryForObject(Query, int.class, id);
     }
 

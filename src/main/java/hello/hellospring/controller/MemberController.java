@@ -22,10 +22,22 @@ public class MemberController {
         this.memberService = memberService;
     }
 
+    @GetMapping("user/sign-up")
+    public String signUp(Model model){
+        model.addAttribute("postUserRes", new PostUserRes());
+        return "user/join";
+    }
+
     @PostMapping("user/sign-up")
     public String create(PostUserRes postUserRes){
         memberService.createUser(postUserRes);
         return "redirect:/home";
+    }
+
+    @GetMapping("user/sign-in")
+    public String signIn(Model model){
+        model.addAttribute("postSignInReq", new PostSignInReq());
+        return "user/login";
     }
 
     @PostMapping("user/sign-in")
