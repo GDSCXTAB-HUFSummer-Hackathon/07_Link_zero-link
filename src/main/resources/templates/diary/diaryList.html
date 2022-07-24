@@ -8,7 +8,7 @@
     <link
       rel="stylesheet"
       href="./css/style.css"
-      th:href="@{/css/styles.css}"
+      th:href="@{/css/style.css}"
     />
   </head>
   <body id="diaryList">
@@ -45,7 +45,7 @@
     </header>
     <div class="btn">
       <!-- th:href="@{}" -->
-      <a href="uploadDiary.html" class="uploadDiary"
+      <a href="uploadDiary.html" th:href="@{/diary/add}"class="uploadDiary"
         >커뮤니티 글 쓰기 <i class="fa-solid fa-pencil"></i
       ></a>
     </div>

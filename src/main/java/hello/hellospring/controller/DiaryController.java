@@ -52,12 +52,12 @@ public class DiaryController {
     @PostMapping("diary/{userIdx}")
     public String save(@ModelAttribute Diary diary, @PathVariable int userIdx, RedirectAttributes redirectAttributes, Model model) {
         Map<String, String> errors = new HashMap<>();
-
+        System.out.println("userIdx = " + userIdx);
         if (!StringUtils.hasText(diary.getIsPublic())) {
             diary.setIsPublic("N");
         }
         diaryService.save(diary, userIdx);
-        return "diary/uploadDiary";
+        return "redirect:/diary/diaryList";
     }
 
     @GetMapping("diary/calendar/{userIdx}")

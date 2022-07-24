@@ -8,7 +8,7 @@
     <link
       rel="stylesheet"
       href="./css/style.css"
-      th:href="@{/css/styles.css}"
+      th:href="@{/css/style.css}"
     />
   </head>
   <body id="diaryList">
@@ -46,7 +46,7 @@
     <div class="writing__wrapper">
       <div class="todayDate"></div>
       <section class="writing">
-        <form method="POST">
+        <form method="POST" action="diary/2">
           <div class="form__wrapper">
             <p class="text__title">내용</p>
             <input
@@ -75,9 +75,7 @@
               </div>
             </div>
             <div class="btns">
-              <a class="submitBtn" th:href="@{/diary/{userIdx}(userIdx = 2)}"
-                ><input type="submit" value="작성"
-              /></a>
+              <input type="submit" value="작성"/>
               <a href="#">취소</a>
             </div>
           </div>
