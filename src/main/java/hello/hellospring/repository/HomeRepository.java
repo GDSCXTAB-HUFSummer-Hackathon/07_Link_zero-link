@@ -1,9 +1,6 @@
 package hello.hellospring.repository;
 
-import hello.hellospring.domain.GetMenuRes;
-import hello.hellospring.domain.HomeChallenge;
-import hello.hellospring.domain.Menu;
-import hello.hellospring.domain.MenuList;
+import hello.hellospring.domain.*;
 
 import java.util.List;
 
@@ -13,4 +10,7 @@ public interface HomeRepository {
     List<HomeChallenge> getHomeChallengeList(int userIdx);
 
     Menu getMenu(int menuIdx);
+
+    Restaurant getRestaurant(int menuIdx);
+
 }

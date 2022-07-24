@@ -1,9 +1,6 @@
 package hello.hellospring.service;
 
-import hello.hellospring.domain.GetMenuRes;
-import hello.hellospring.domain.HomeChallenge;
-import hello.hellospring.domain.Menu;
-import hello.hellospring.domain.MenuList;
+import hello.hellospring.domain.*;
 import hello.hellospring.repository.HomeRepository;
 import org.springframework.stereotype.Service;
 
@@ -20,4 +17,6 @@ public class HomeService {
     public List<HomeChallenge> getHomeChallengeList(int userIdx) {return homeRepository.getHomeChallengeList(userIdx);}
 
     public Menu getMenu(int menuIdx) { return homeRepository.getMenu(menuIdx);}
+
+    public Restaurant getRestaurant(int menuIdx) { return homeRepository.getRestaurant(menuIdx);}
 }

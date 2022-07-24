@@ -68,6 +68,18 @@ public class JdbcHomeRepository implements HomeRepository{
         return menu;
     }
 
+    @Override
+    public Restaurant getRestaurant(int menuIdx) {
+        String findIdx = "SELECT restaurantIdx FROM Menu WHERE menuIdx=?;";
+        // 식당
+        String getUsersQuery1 = "select R.restaurantIdx, R.closeTime, R.restaurantPhone, R.restaurantName, R.status as restaurantStatus\n" +
+                "from Restaurant R\n" +
+                "WHERE R.restaurantIdx=?;";
+        int restaurantIdx = jdbcTemplate.queryForObject(findIdx, int.class, menuIdx);
+        Restaurant restaurant = jdbcTemplate.queryForObject(getUsersQuery1, getRestaurantMapper(), restaurantIdx);
+        return restaurant;
+    }
+
     private RowMapper<Menu> getMenuMapper() {
         // 식당
         String getUsersQuery1 = "select R.restaurantIdx, R.closeTime, R.restaurantPhone, R.restaurantName, R.status as restaurantStatus\n" +
@@ -83,12 +95,11 @@ public class JdbcHomeRepository implements HomeRepository{
             menu.setMenuOriginalPrice(rs.getInt("menuOriginalPrice"));
             menu.setMenuDiscountPrice(rs.getInt("menuDiscountPrice"));
             menu.setMenuStatus(rs.getString("menuStatus"));
-            jdbcTemplate.queryForObject(getUsersQuery1, getRestaurant(), rs.getInt("restaurantIdx"));
             return menu;
         };
     }
 
-    private RowMapper<Restaurant> getRestaurant() {
+    private RowMapper<Restaurant> getRestaurantMapper() {
         return (rs, rowNum) -> {
             Restaurant restaurant = new Restaurant();
             restaurant.setRestaurantIdx(rs.getInt("restaurantIdx"));

@@ -8,7 +8,6 @@ public class Menu {
     private int menuOriginalPrice;
     private int menuDiscountPrice;
     private String menuStatus;
-    private Restaurant restaurant;
 
     public int getMenuIdx() {
         return menuIdx;
@@ -66,11 +65,4 @@ public class Menu {
         this.menuStatus = menuStatus;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
 }

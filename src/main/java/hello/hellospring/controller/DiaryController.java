@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,7 +85,11 @@ public class DiaryController {
             dayMax = dayData[month - 1];
         }
         List<Integer> dates = diaryService.getCalendar(userIdx, year, month, dayMax);
-        model.addAttribute("dates", dates);
+        List<Integer> arr = new ArrayList<>();
+        arr.add(22);
+        arr.add(23);
+        arr.add(24);
+        model.addAttribute("dates",arr);
         System.out.println("dates = " + dates);
         return "diary/calendar";
     }

@@ -3,7 +3,7 @@ const a = () => {
 
   for (var i = 0; i < stamps.length; i++) {
     var img = document.createElement("img");
-    img.src = `/js/images/apple.png`;
+    img.src = `/images/apple.png`;
     stamps[i].appendChild(img);
   }
 };
