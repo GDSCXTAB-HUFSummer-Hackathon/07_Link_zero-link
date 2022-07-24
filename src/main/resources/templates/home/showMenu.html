@@ -11,7 +11,8 @@
     <header>
       <nav>
         <ul>
-          <a class="logo" href="#">
+          <a class="logo" href="#" th:href="@{/home}"
+          >
             <li>
               <img
                 src="./photo/logo.png"
@@ -40,20 +41,13 @@
           >
             <li>Login</li>
           </a>
-          <a
-            class="logout"
-            href="#"
-            th:href="@{/home}"
-          >
-            <li>Logout</li>
-          </a>
         </ul>
       </nav>
     </header>
     <section class="product">
       <div class="wrapper">
         <div class="product__col1">
-          <img src="./photo/people.png" th:src="@{/images/people.png}" alt="" />
+          <img src="./photo/people.png" th:src="${menu.menuImg}" alt="" />
           <a href="#">실시간 수량 알림 신청</a>
         </div>
         <div class="product__col2">
@@ -61,7 +55,7 @@
             <i
               class="fa-solid fa-angle-right"
             ></i>
-            <span th:text="${menu.menuName}">모닝브레드</span> (<span th:text="${restaurant.distance}">이문동</span>)
+            <span th:text="${menu.menuName}">모닝브레드</span>
           </p>
           <p>상품명: <span th:text="${menu.menuName}">피자빵</span></p>
           <p>수량: <span th:text="${menu.menuQuantity}">3</span>개</p>

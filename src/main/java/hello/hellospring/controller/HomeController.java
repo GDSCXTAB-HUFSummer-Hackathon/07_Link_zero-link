@@ -50,7 +50,7 @@ public class HomeController {
         Restaurant restaurant = homeService.getRestaurant(menuIdx);
         model.addAttribute("menu", menu);
         model.addAttribute("restaurant", restaurant);
-        System.out.println("menu = " + menu.getMenuName());
+        System.out.println("menu = " + menu.getMenuImg());
         return "home/showMenu";
     }
 }
