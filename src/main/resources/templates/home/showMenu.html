@@ -27,7 +27,7 @@
           <a href="#">
             <li>전체 상품</li>
           </a>
-          <a href="diaryList.html" th:href="@{}">
+          <a href="diaryList.html" th:href="@{/diary}">
             <li>커뮤니티</li>
           </a>
           <a href="#">
@@ -37,15 +37,13 @@
             class="login"
             href="login.html"
             th:href="@{/users/sign-in}"
-            th:if="${user.userIdx} == false"
           >
             <li>Login</li>
           </a>
           <a
             class="logout"
             href="#"
-            th:href="#"
-            th:if="${user.userIdx} == true"
+            th:href="@{/home}"
           >
             <li>Logout</li>
           </a>
@@ -62,23 +60,22 @@
           <p>
             <i
               class="fa-solid fa-angle-right"
-              th:text="${menu.menuName} (${menu.restaurant.distance})"
             ></i>
-            모닝브레드 (이문동)
+            <span th:text="${menu.menuName}">모닝브레드</span> (<span th:text="${menu.distance}">이문동</span>)
           </p>
-          <p th:text="상품명: ${menu.menuName}">상품명: 피자빵</p>
-          <p th:Text="수량: ${menu.menuQuantity} 개">수량: 3개</p>
+          <p>상품명: <span th:text="${menu.menuName}">피자빵</span></p>
+          <p>수량: <span th:Text="${menu.menuQuantity}">3</span>개</p>
           <p class="price">
-            가격: <del th:text="${menu.menuOriginalPrice}원">4,000원</del
-            ><b th:text="${menu.menuDiscountPrice}">2,500원</b>
+            가격: <del><span th:text="${menu.menuOriginalPrice}">4,000</span>원</del
+            ><b><span th:text="${menu.menuDiscountPrice}">2,500</span>원</b>
           </p>
           <p><i class="fa-solid fa-circle-info"></i>매장 픽업, 직접 결제</p>
-          <p th:text="운영 시간: ${menu.restaurant.closeTime}시">
-            <i class="fa-solid fa-clock"></i>운영 시간: 22시
+          <p>
+            <i class="fa-solid fa-clock"></i>운영 시간: <span th:text="${menu.restaurant.closeTime}">22</span>시
           </p>
-          <p th:text="연락처: ${menu.restaurant.restaurantPhone}">
+          <p>
             <i class="fa-solid fa-mobile-screen-button"></i>연락처:
-            010-1234-5678
+            <span th:text="${menu.restaurant.restaurantPhone}">010-1234-5678</span>
           </p>
         </div>
       </div>
